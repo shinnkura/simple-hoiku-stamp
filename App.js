@@ -1,13 +1,14 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+import { Calendar } from "react-native-calendars"; // Calendarコンポーネントをインポート
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+      <Calendar />
       <StatusBar style="auto" />
     </View>
   );
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center",
+    padding: 10, // カレンダーの表示領域を調整
   },
 });
