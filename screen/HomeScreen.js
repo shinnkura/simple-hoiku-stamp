@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { Calendar } from "react-native-calendars";
+import { Calendar, LocaleConfig } from "react-native-calendars";
 import { StatusBar } from "expo-status-bar";
 
 const HomeScreen = () => {
@@ -25,9 +25,6 @@ const HomeScreen = () => {
           disabledArrowColor: "#d9e1e8",
           monthTextColor: "#FFB347",
           indicatorColor: "#FFB347",
-          textDayFontFamily: "monospace",
-          textMonthFontFamily: "monospace",
-          textDayHeaderFontFamily: "monospace",
           textDayFontWeight: "300",
           textMonthFontWeight: "bold",
           textDayHeaderFontWeight: "300",
@@ -35,6 +32,8 @@ const HomeScreen = () => {
           textMonthFontSize: 20,
           textDayHeaderFontSize: 16,
         }}
+        hideArrows={true}
+        enableSwipeMonths={true}
       />
       <Text style={styles.daysText}>プレゼントまであと{daysUntilPresent}日</Text>
       <TouchableOpacity style={styles.button} onPress={() => alert("プレゼントを受け取りました！")}>
@@ -45,12 +44,20 @@ const HomeScreen = () => {
   );
 };
 
+LocaleConfig.locales.jp = {
+  monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+  monthNamesShort: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+  dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+  dayNamesShort: ["日", "月", "火", "水", "木", "金", "土"],
+};
+LocaleConfig.defaultLocale = "jp";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "flex-start", // カレンダーを上部に配置
-    paddingTop: 30, // 上部の余白を追加
+    justifyContent: "flex-start",
+    paddingTop: 30,
   },
   daysText: {
     fontSize: 18,
@@ -66,7 +73,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 50, // ボタンの幅を調整
+    marginHorizontal: 50,
   },
   buttonText: {
     color: "#fff",
