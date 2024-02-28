@@ -27,8 +27,8 @@ export default function App() {
           tabBarInactiveTintColor: "gray",
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsStack} options={{ headerShown: false }} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{ title: "ホーム" }} />
+        <Tab.Screen name="Settings" component={SettingsStack} options={{ title: "設定", headerShown: false }} />
       </Tab.Navigator>
     </NavigationContainer>
   );
