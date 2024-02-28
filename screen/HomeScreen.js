@@ -6,6 +6,22 @@ import { StatusBar } from "expo-status-bar";
 const HomeScreen = () => {
   const daysUntilPresent = 10; // プレゼントまでの日数
 
+  const renderCustomHeader = (dateString) => {
+    // ISO 8601形式の日付文字列からDateオブジェクトを作成
+    const dateObject = new Date(dateString);
+
+    // Dateオブジェクトから年と月を取得
+    const year = dateObject.getFullYear();
+    const monthIndex = dateObject.getMonth(); // getMonthは0から始まるため、LocaleConfigでの月の名前を取得する際には+1する必要はありません
+    const month = LocaleConfig.locales["jp"].monthNames[monthIndex];
+
+    return (
+      <View style={styles.header}>
+        <Text style={styles.headerText}>{`${year}年 ${month}`}</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Calendar
@@ -34,6 +50,7 @@ const HomeScreen = () => {
         }}
         hideArrows={true}
         enableSwipeMonths={true}
+        renderHeader={renderCustomHeader} // カスタムヘッダーを使用
       />
       <Text style={styles.daysText}>プレゼントまであと{daysUntilPresent}日</Text>
       <TouchableOpacity style={styles.button} onPress={() => alert("プレゼントを受け取りました！")}>
@@ -58,6 +75,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "flex-start",
     paddingTop: 30,
+  },
+  header: {
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 10,
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#FFB347",
   },
   daysText: {
     fontSize: 18,
