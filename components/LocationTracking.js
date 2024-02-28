@@ -32,17 +32,20 @@ const LocationTracking = () => {
       return;
     }
   }
+  useEffect(() => {
+    requestLocationPermission(); // コンポーネントがマウントされた直後に位置情報の許可をリクエスト
+  }, []);
 
   const requestLocationPermission = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
       Alert.alert("位置情報へのアクセス許可", "位置情報のアクセスを許可してください。", [
         { text: "許可しない", style: "cancel" },
-        { text: "許可する", onPress: () => getCurrentLocation() },
+        { text: "許可する", onPress: () => getCurrentLocation() }, // 許可された場合、現在位置を取得
       ]);
       return;
     }
-    getCurrentLocation();
+    getCurrentLocation(); // 許可されている場合、直接現在位置を取得
   };
 
   const getCurrentLocation = async () => {
@@ -52,10 +55,8 @@ const LocationTracking = () => {
       setMapRegion({
         latitude: currentLocation.coords.latitude,
         longitude: currentLocation.coords.longitude,
-        // latitudeDelta: 0.00922,
-        latitudeDelta: 0.00012,
-        // longitudeDelta: 0.00421,
-        longitudeDelta: 0.00012,
+        latitudeDelta: 0.005, // より小さい値に設定
+        longitudeDelta: 0.005, // より小さい値に設定
       });
 
       // Check if within the target region
