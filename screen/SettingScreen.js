@@ -1,13 +1,13 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Text } from "react-native";
+import LocationTracking from "../components/LocationTracking";
 
 const SettingScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Settings Screen</Text>
       <Text style={styles.item}>地図</Text>
-      <Text style={styles.item}>ユーザー情報</Text>
+      <LocationTracking />
       <StatusBar style="auto" />
     </View>
   );
