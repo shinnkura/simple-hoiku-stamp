@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./screen/HomeScreen";
-import SettingScreen from "./screen/SettingScreen";
+import SettingsStack from "./SettingsStack"; // SettingsStackのインポート
 import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -16,9 +16,9 @@ export default function App() {
             let iconName;
 
             if (route.name === "Home") {
-              iconName = focused ? "home" : "home";
+              iconName = focused ? "home" : "home-outline";
             } else if (route.name === "Settings") {
-              iconName = focused ? "settings" : "settings";
+              iconName = focused ? "settings" : "settings-outline";
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -28,7 +28,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingScreen} />
+        <Tab.Screen name="Settings" component={SettingsStack} options={{ headerShown: false }} />
       </Tab.Navigator>
     </NavigationContainer>
   );

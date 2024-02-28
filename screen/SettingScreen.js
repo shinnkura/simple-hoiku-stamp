@@ -1,13 +1,11 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Text } from "react-native";
-import LocationTracking from "../components/LocationTracking";
+import { StyleSheet, View, Text, Button } from "react-native";
 
-const SettingScreen = () => {
+const SettingScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.item}>地図</Text>
-      <LocationTracking />
+      <Button title="位置情報をチェック" onPress={() => navigation.navigate("LocationTracking")} />
       <StatusBar style="auto" />
     </View>
   );
@@ -19,13 +17,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "center",
     padding: 20,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 20,
-    color: "#FFB347",
-    alignSelf: "center",
   },
   item: {
     fontSize: 18,
