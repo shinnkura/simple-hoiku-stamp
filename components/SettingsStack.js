@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SettingScreen from "./screen/SettingScreen";
-import LocationTracking from "./components/LocationTracking"; // LocationTrackingのパスを適宜調整してください
+import SettingScreen from "../screen/SettingScreen";
+import LocationTracking from "./LocationTracking";
 
 const Stack = createNativeStackNavigator();
 

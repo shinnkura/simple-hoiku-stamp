@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 
 const SettingScreen = ({ navigation }) => {
   return (

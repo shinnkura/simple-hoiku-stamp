@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./screen/HomeScreen";
-import SettingsStack from "./SettingsStack"; // SettingsStackのインポート
+import SettingsStack from "./components/SettingsStack"; // SettingsStackのインポート
 import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
